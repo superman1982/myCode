@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class="over_hidden h100b">
+<title>引导页</title>
+<meta charset="utf-8">
+<meta name="apple-touch-fullscreen" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+<script src="../js/jquery-debug.js"></script>
+<link href="../css/app_lead.css" rel="stylesheet"/>
+<body>
+    <section data-role="page" id="Cwork_lead" class="Cwork_lead">
+        <div data-role="content" class="cont">
+            <span class="lead_tiao color1">跳过</span>
+            <ul>
+                <li class="one active">
+                    <div class="quan">
+                        <img src="../images/lead1_1.png" class="img1 translate_img1">
+                        <img src="../images/lead1_2.png" class="img2 translate_img2">
+                        <img src="../images/lead1_3.png" class="img3 translate_img3">
+                        <img src="../images/lead1_4.png" class="img4 translate_img4">
+                        <img src="../images/lead1_5.png" class="img5 translate_img5">
+                        <img src="../images/lead1_7.png" class="img7 translate_img7">
+                        <img src="../images/lead1_6.png" class="img6 translate_img6">
+                    </div>
+                </li>
+                <li class="two">
+                    <div class="two_zu translate_two">
+                        <img src="../images/lead2._1.png" alt="" class="two_img1 translate_two_img1"/>
+                        <img src="../images/lead2._2.png" alt="" class="two_img2 translate_two_img2"/>
+                        <img src="../images/lead2._3.png" alt="" class="two_img3 translate_two_img3"/>
+                        <img src="../images/lead2._4.png" alt="" class="two_img4 translate_two_img4"/>
+                        <img src="../images/lead2._5.png" alt="" class="two_img5 translate_two_img5"/>
+                        <img src="../images/lead2._6.png" alt="" class="two_img6 translate_two_img6"/>
+                        <img src="../images/lead2._7.png" alt="" class="two_img7 translate_two_img7"/>
+                        <img src="../images/lead2._8.png" alt="" class="two_img8 translate_two_img8"/>
+                        <img src="../images/lead2._9.png" alt="" class="two_img9 translate_two_img9"/>
+                    </div>
+                </li>
+                <li class="three">
+                    <div class="three_zu">
+                        <img src="../images/lead3_1.png" alt="" class="three_img1 translate_three_img1"/>
+                        <img src="../images/lead3_2.png" alt="" class="three_img2 translate_three_img2"/>
+                        <img src="../images/lead3_3.png" alt="" class="three_img3 translate_three_img3"/>
+                        <img src="../images/lead3_4.png" alt="" class="three_img4 translate_three_img4"/>
+                    </div>
+
+                </li>
+                <li class="four">
+                    <div class="four_zu">
+                        <img src="../images/lead4_1.png" alt="" class="four_img1 translate_four_img1"/>
+                        <img src="../images/lead4_2.png" alt="" class="four_img2 translate_four_img2"/>
+                        <img src="../images/lead4_3.png" alt="" class="four_img3 translate_four_img3"/>
+                        <img src="../images/lead4_4.png" alt="" class="four_img4 translate_four_img4"/>
+                        <img src="../images/lead4_5.png" alt="" class="four_img5 translate_four_img5"/>
+                        <img src="../images/lead4_6.png" alt="" class="four_img6 translate_four_img6"/>
+                    </div>
+                    <span class="beigin">开始使用</span>
+                </li>
+            </ul>
+            <div class="btn">
+                <span class="groued"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    <script type="text/javascript">
+        $(function(){
+            var objThis = $('.Cwork_lead'),
+                index = 1,
+                objMove = objThis.find('.cont').find('ul'),
+                btn = $('.btn span'),
+                tiao = $('.lead_tiao'),
+                color = ['#19a8e6','#f39f3f','#f06787','#20b076'],
+                startX = 0,
+                disX = 0;
+            $(".Cwork_lead").bind('touchstart',function(e){
+                e.stopPropagation();
+                e.preventDefault();
+                startX = e.originalEvent.targetTouches[0].pageX;
+            }).bind('touchmove',function(e){
+                disX = e.originalEvent.targetTouches[0].pageX - startX;
+
+            }).bind('touchend',function(){
+                    if(disX >10){
+                        index--;
+                        if(index<1){
+                            index = 1
+                        }else{
+                            $(this).find('ul').removeClass();
+                            $(this).find('ul').addClass("translate_ry_" + index + "00 animated_f_5");
+                            $(this).find('li').removeClass('active');
+                            $(this).find('li').eq(index - 1).addClass('active');
+                            objThis.find('.btn span').removeClass('groued');
+                            $(btn[index-1]).addClass('groued');
+                            tiao.css({color:color[index-1]});
+                        }
+                    }else if(disX < -10){
+                        if(index> $(this).find('li').length-1){
+                            index = 3
+                        }
+                        $(this).find('ul').removeClass();
+                        $(this).find('ul').addClass("translate_ly_" + index + "00 animated_f_5");
+                        $(this).find('li').removeClass('active');
+                        $(this).find('li').eq(index).addClass('active');
+                        objThis.find('.btn span').removeClass('groued');
+                        $(btn[index]).addClass('groued');
+                        tiao.css({color:color[index]});
+                        index++;
+                    }
+            });
+	        $('.beigin').bind('touchstart',function(){
+        		var $ready = function() {
+                              CWORKJSBridge.invoke("toIndex",{},null
+                                                   );
+		    	};
+		    	if(typeof CWORKJSBridge === 'undefined') { 
+		    		document.addEventListener('CWORKJSBridgeReady', $ready, false);
+		    	} else {
+		    		$ready();
+		    	}
+	        });
+	        $('.lead_tiao').bind('touchstart',function(){
+	            var $ready = function() {
+		    		CWORKJSBridge.invoke("toIndex");
+		    	};
+		    	if(typeof CWORKJSBridge === 'undefined') { 
+		    		document.addEventListener('CWORKJSBridgeReady', $ready, false);
+		    	} else {
+		    		$ready();
+		    	}
+	        });
+        })
+    </script>
+    </section>
+</body>
+</html>

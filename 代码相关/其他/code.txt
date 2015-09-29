@@ -1,0 +1,30 @@
+    SyAddressBookCardViewController *addressBookViewController = [[SyAddressBookCardViewController alloc] init];
+    NSInteger cardFrom = kSyAddressBookCardFrom_CustomAddesssBook;
+    if (_controllerParam.from == kFromType_PrivateTeam) {
+        cardFrom = kSyAddressBookCardFrom_PraviteAddesssBook;
+    }
+    addressBookViewController.from = cardFrom;
+    addressBookViewController.organization = org;
+    [self.navigationController pushViewController:addressBookViewController animated:YES];
+    [addressBookViewController release];
+
+
+
+           currentRowCount = Int( tableView.numberOfRowsInSection(indexPath.section))
+            var cell:DownLoadMoreCell = tableView.cellForRowAtIndexPath(indexPath) as DownLoadMoreCell
+            cell.activityView.startAnimating()
+            cell.activityView.hidden = false
+            self.loadMoreData({(aNewRowCount) in
+                cell.activityView.stopAnimating()
+                cell.activityView.hidden = true;
+                if(aNewRowCount > 0){
+                    tableView.beginUpdates()
+                    var indexPathes:NSMutableArray = NSMutableArray()
+                    for (var index:Int = Int(self.currentRowCount); index < index + aNewRowCount; index++){
+                        var path: NSIndexPath = NSIndexPath(forItem:index, inSection: indexPath.section)
+                        indexPathes.addObject(path)
+                    }
+                    self.currentRowCount += aNewRowCount
+                    tableView.insertRowsAtIndexPaths(indexPathes, withRowAnimation: UITableViewRowAnimation.Fade)
+                    tableView.endUpdates()
+                    tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.None, animated: true)

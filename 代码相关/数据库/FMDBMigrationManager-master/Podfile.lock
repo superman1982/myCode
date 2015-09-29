@@ -1,0 +1,23 @@
+PODS:
+  - Expecta (0.3.2)
+  - FMDB/common (2.5)
+  - FMDB/standard (2.5):
+    - FMDB/common
+  - FMDBMigrationManager (1.3.4):
+    - FMDB/common (~> 2.3)
+
+DEPENDENCIES:
+  - Expecta (~> 0.3.0)
+  - FMDB/standard
+  - FMDBMigrationManager (from `.`)
+
+EXTERNAL SOURCES:
+  FMDBMigrationManager:
+    :path: .
+
+SPEC CHECKSUMS:
+  Expecta: ee641011fe10aa1855d487b40e4976dac50ec342
+  FMDB: 0efa188cf0dd1ce82c27a478cd5f5fa245308677
+  FMDBMigrationManager: aa46d473c863b6ade5676c49b73f56540b358ad7
+
+COCOAPODS: 0.36.0

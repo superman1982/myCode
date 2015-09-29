@@ -1,0 +1,12 @@
+
+
+#import <UIKit/UIKit.h>
+
+@interface CustomBarButtonItem : UIBarButtonItem
+
+-(id)initBarButtonWithTarget:(id)target NormalImage:(NSString *)normalImage HightedImage:(NSString *)hightdImage action:(SEL)action;
+
+-(id)initBarButtonWithTarget:(id)target TitleText:(NSString *)titleText action:(SEL)action;
+
+
+@end

@@ -1,0 +1,3 @@
+https://211.157.139.204:8443/yyoa/ios/iphone/certificate/myCA.cer
+https://211.157.139.204:8443/yyoa
+iPhone_u8_2_2_0
