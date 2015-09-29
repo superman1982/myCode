@@ -1,0 +1,2 @@
+# myCode
+practice using git
