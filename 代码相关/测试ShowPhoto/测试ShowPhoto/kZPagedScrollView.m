@@ -64,7 +64,12 @@
 
 -(void)oritationChangedReLayoutImageviews{
     for (kZPageViewItem *item in visibleViews) {
+        item.bounds = self.bounds;
         [item setImageViewFrame];
+    }
+    
+    for (kZPageViewItem *item in reuseCircleViews) {
+        item.bounds = self.bounds;
     }
 }
 

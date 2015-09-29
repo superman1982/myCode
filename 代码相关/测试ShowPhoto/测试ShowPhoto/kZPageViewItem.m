@@ -67,7 +67,6 @@
 -(void)setImageViewFrame{
     _imageView.frame = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
     [self setmaxiMinZoomScale];
-    [self centerTheImageView];
 }
 
 -(void)setDownLoadProgress:(float)aProgress{
@@ -85,25 +84,31 @@
     self.minimumZoomScale = 0.25;
 
     if (_imageView.frame.size.width > 0) {
+        NSLog(@"_imageView%ld.frame1:%@\n",(long)_index,NSStringFromCGRect(_imageView.frame));
+
         CGSize imageSize = _imageView.image.size;
-        CGFloat yZoomScale = self.bounds.size.width / imageSize.width;
-        CGFloat xZoomScale = self.bounds.size.height / imageSize.height;
+        CGFloat xZoomScale = self.bounds.size.width / imageSize.width;
+        CGFloat yZoomScale = self.bounds.size.height / imageSize.height;
         CGFloat minScale = MIN(yZoomScale, xZoomScale);
-        self.minimumZoomScale = MIN(1, minScale);
-        self.zoomScale = self.minimumZoomScale;
+        minScale = MIN(1, minScale);
+        self.minimumZoomScale = minScale;
+        
+        CGFloat xWidth = imageSize.width * minScale;
+        CGFloat yHight = imageSize.height * minScale;
+        CGRect  imageScaledFrame = _imageView.frame;
+        imageScaledFrame.size = CGSizeMake(xWidth, yHight);
+        _imageView.frame = imageScaledFrame;
+        
+        [self centerTheImageView];
         
         NSLog(@"self.bounds:%@",NSStringFromCGRect(self.bounds));
-        NSLog(@"_imageView%ld.frame:%@\n",(long)_index,NSStringFromCGRect(_imageView.frame));
-
+        NSLog(@"_imageView%ld.frame2:%@\n",(long)_index,NSStringFromCGRect(_imageView.frame));
     }
 }
 
 -(void)centerTheImageView{
     CGRect centerRect;
     CGRect imageViewRect = _imageView.frame;
-    if (self.zoomScale == 1) {
-        imageViewRect.size = _imageView.image.size;
-    }
     if (imageViewRect.size.width < self.bounds.size.width) {
         centerRect.origin.x = (self.bounds.size.width - imageViewRect.size.width)/2.0;
     }else{
