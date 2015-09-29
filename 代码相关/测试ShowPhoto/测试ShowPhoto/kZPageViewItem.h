@@ -22,5 +22,5 @@
 //先调用这个方法初始化控件，再设置self.frame设置位置
 -(void)disPlayIndex:(NSInteger)aIndex WithKZPhoto:(KzPhoto *)aPhoto;
 //旋转屏幕时，重新设置ImageView位置
--(void)layOutImageView;
+-(void)setImageViewFrame;
 @end

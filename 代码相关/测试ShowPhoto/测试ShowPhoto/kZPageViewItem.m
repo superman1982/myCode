@@ -14,7 +14,6 @@
 @interface kZPageViewItem()
 {
     NSInteger _index;
-    CGSize    _currentImageSize;
 }
 @end
 
@@ -65,10 +64,10 @@
     _downLoadProgressHUD.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
 }
 
--(void)layOutImageView{
+-(void)setImageViewFrame{
     _imageView.frame = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
-    [self centerTheImageView];
     [self setmaxiMinZoomScale];
+    [self centerTheImageView];
 }
 
 -(void)setDownLoadProgress:(float)aProgress{
@@ -84,42 +83,40 @@
 -(void)setmaxiMinZoomScale{
     self.maximumZoomScale = 1.0;
     self.minimumZoomScale = 0.25;
+
     if (_imageView.frame.size.width > 0) {
-        //发现bug 产生可能原因，kZPagedScrollView 第二次调用了此方法，导致
-        /*  kZPagedScrollView.m 中
-         -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-         [self tilePages];
-         });
-         }*/
-        CGSize imageSize = _currentImageSize;
+        CGSize imageSize = _imageView.image.size;
         CGFloat yZoomScale = self.bounds.size.width / imageSize.width;
         CGFloat xZoomScale = self.bounds.size.height / imageSize.height;
         CGFloat minScale = MIN(yZoomScale, xZoomScale);
         self.minimumZoomScale = MIN(1, minScale);
         self.zoomScale = self.minimumZoomScale;
-        NSLog(@"_imageView%d.frame:%@",_index,NSStringFromCGRect(_imageView.frame));
+        
+        NSLog(@"self.bounds:%@",NSStringFromCGRect(self.bounds));
+        NSLog(@"_imageView%ld.frame:%@\n",(long)_index,NSStringFromCGRect(_imageView.frame));
 
-//        NSLog(@"minScale:%f",minScale);
     }
 }
 
 -(void)centerTheImageView{
     CGRect centerRect;
-    if (_imageView.frame.size.width < self.bounds.size.width) {
-        centerRect.origin.x = (self.bounds.size.width - _imageView.frame.size.width)/2.0;
+    CGRect imageViewRect = _imageView.frame;
+    if (self.zoomScale == 1) {
+        imageViewRect.size = _imageView.image.size;
+    }
+    if (imageViewRect.size.width < self.bounds.size.width) {
+        centerRect.origin.x = (self.bounds.size.width - imageViewRect.size.width)/2.0;
     }else{
         centerRect.origin.x = 0.0;
     }
     
-    if (_imageView.frame.size.height < self.bounds.size.height) {
-        centerRect.origin.y = (self.bounds.size.height - _imageView.frame.size.height)/2.0;
+    if (imageViewRect.size.height < self.bounds.size.height) {
+        centerRect.origin.y = (self.bounds.size.height - imageViewRect.size.height)/2.0;
     }else{
         centerRect.origin.y = 0.0;
     }
-    centerRect.size.width = _imageView.frame.size.width;
-    centerRect.size.height = _imageView.frame.size.height;
-    
+    centerRect.size = imageViewRect.size;
+
     _imageView.frame = centerRect;
 }
 
@@ -179,8 +176,7 @@
         });
 
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        _currentImageSize = image.size;
-        [self layOutImageView];
+        [self setImageViewFrame];
     }];
 
 }
@@ -190,6 +186,8 @@
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView{
+//    NSLog(@"_imageZoom.frame:%@",NSStringFromCGRect(_imageView.frame));
+//    NSLog(@"_imageZoom.imageSize:%@",NSStringFromCGSize(_imageView.image.size));
     [self centerTheImageView];
 }
 

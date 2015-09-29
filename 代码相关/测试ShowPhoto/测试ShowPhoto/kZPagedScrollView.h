@@ -22,7 +22,6 @@
 
 @property (nonatomic,retain) id<kZPagedScrollViewDelegate> kzScrollViewDelegate;
 @property (nonatomic,assign) BOOL       orentationisChanged;
-
 -(void)disPlayItemAtIndex:(NSInteger)aIndex;
 
 -(void)oritationChangedReLayoutImageviews;

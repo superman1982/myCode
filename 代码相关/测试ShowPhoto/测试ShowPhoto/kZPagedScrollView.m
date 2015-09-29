@@ -64,7 +64,7 @@
 
 -(void)oritationChangedReLayoutImageviews{
     for (kZPageViewItem *item in visibleViews) {
-        [item layOutImageView];
+        [item setImageViewFrame];
     }
 }
 
