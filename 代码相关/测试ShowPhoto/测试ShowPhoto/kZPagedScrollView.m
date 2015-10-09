@@ -59,7 +59,7 @@
     }
     CGPoint offset = CGPointMake(self.bounds.size.width * currentIndex, 0);
     [self setContentOffset:offset animated:NO];
-    
+    [self setContentSizeOfScrollView];
 }
 
 -(void)oritationChangedReLayoutImageviews{
@@ -79,7 +79,9 @@
         numberOfPage = [_kzScrollViewDelegate numberOfPagesInScrollView:self];
         totalNumber = numberOfPage;
     }
+    
     self.contentSize = CGSizeMake(self.bounds.size.width * numberOfPage, self.bounds.size.height);
+
 }
 
 -(kZPageViewItem *)getPageView:(NSInteger)aIndex{
@@ -118,10 +120,10 @@
     }
     return NO;
 }
+
 /* 测试ShowPhoto[811:60b] _imageView.frame:{{-1.8020728e-06, 93.5}, {440, 293}}*/
 
 -(void)tilePages{
-    [self setContentSizeOfScrollView];
     
     CGRect visibleBounds = self.bounds;
     int firstVisiblePage = floorf(CGRectGetMinX(visibleBounds)/visibleBounds.size.width);
@@ -160,6 +162,7 @@
 }
 
 -(void)disPlayItemAtIndex:(NSInteger)aIndex{
+    [self setContentSizeOfScrollView];
     CGPoint offset = CGPointMake(self.bounds.size.width * aIndex, 0);
     [self setContentOffset:offset animated:YES];
     [self tilePages];

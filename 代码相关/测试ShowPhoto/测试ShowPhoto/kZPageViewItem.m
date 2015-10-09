@@ -67,6 +67,7 @@
 -(void)setImageViewFrame{
     _imageView.frame = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
     [self setmaxiMinZoomScale];
+    self.contentSize = _imageView.frame.size;
 }
 
 -(void)setDownLoadProgress:(float)aProgress{
@@ -194,8 +195,6 @@
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView{
-//    NSLog(@"_imageZoom.frame:%@",NSStringFromCGRect(_imageView.frame));
-//    NSLog(@"_imageZoom.imageSize:%@",NSStringFromCGSize(_imageView.image.size));
     [self centerTheImageView];
 }
 
