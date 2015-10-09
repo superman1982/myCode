@@ -91,7 +91,10 @@
         CGFloat yZoomScale = self.bounds.size.height / imageSize.height;
         CGFloat minScale = MIN(yZoomScale, xZoomScale);
         minScale = MIN(1, minScale);
-        self.minimumZoomScale = minScale;
+        self.maximumZoomScale =1.0 + (1.0- minScale);
+        self.minimumZoomScale = 1.0;
+        NSLog(@"miniScale:%f",minScale);
+//        self.zoomScale = minScale;
         
         CGFloat xWidth = imageSize.width * minScale;
         CGFloat yHight = imageSize.height * minScale;

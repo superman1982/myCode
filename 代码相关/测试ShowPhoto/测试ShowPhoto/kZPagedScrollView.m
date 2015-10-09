@@ -64,12 +64,12 @@
 
 -(void)oritationChangedReLayoutImageviews{
     for (kZPageViewItem *item in visibleViews) {
-        item.bounds = self.bounds;
+        item.bounds = CGRectMake(0, 0, self.bounds.size.width - 2 * SPACEWIDTH, self.bounds.size.height);
         [item setImageViewFrame];
     }
     
     for (kZPageViewItem *item in reuseCircleViews) {
-        item.bounds = self.bounds;
+        item.bounds = CGRectMake(0, 0, self.bounds.size.width - 2 * SPACEWIDTH, self.bounds.size.height);
     }
 }
 
