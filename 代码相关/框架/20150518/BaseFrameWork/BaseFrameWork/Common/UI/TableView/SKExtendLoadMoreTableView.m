@@ -89,6 +89,16 @@
     }
 }
 
+#pragma mark - Action
+-(void)didCellClickedDeleteButton:(UITableViewCell *)aSender
+{
+    [super didCellClickedDeleteButton:aSender];
+    [self performSelector:@selector(rsetFooterFrame) withObject:nil afterDelay:.4];
+
+}
+-(void)rsetFooterFrame{
+    _footerView.frame =  CGRectMake(0, self.homeTableView.contentSize.height, self.homeTableView.frame.size.width, 44);
+}
 #pragma mark EGORefresh
 -(void)doneLoadingTableViewData{
     [super doneLoadingTableViewData];
