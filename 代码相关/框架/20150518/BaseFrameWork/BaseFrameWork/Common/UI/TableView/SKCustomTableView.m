@@ -318,6 +318,7 @@
         [_delegate didDeleteCellAtIndexpath:self.homeTableView IndexPath:vIndex FromView:self];
     }
     [self.homeTableView deleteRowsAtIndexPaths:@[vIndex,] withRowAnimation:UITableViewRowAnimationFade];
+    [self doneLoadingTableViewData];
 }
 
 #pragma mark 点击更多
