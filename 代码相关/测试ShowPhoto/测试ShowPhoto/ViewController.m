@@ -49,11 +49,11 @@
     [mScrollView disPlayItemAtIndex:0];
     [self.view addSubview:mScrollView];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
 }
 
 -(void)dealloc{

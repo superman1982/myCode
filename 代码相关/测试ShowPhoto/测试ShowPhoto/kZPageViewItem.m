@@ -67,6 +67,7 @@
 -(void)setImageViewFrame{
     _imageView.frame = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
     [self setmaxiMinZoomScale];
+    //不设置这个的化，放大到一定程度，就会滑动出现问题。
     self.contentSize = _imageView.frame.size;
 }
 
@@ -85,7 +86,6 @@
     self.minimumZoomScale = 0.25;
 
     if (_imageView.frame.size.width > 0) {
-        NSLog(@"_imageView%ld.frame1:%@\n",(long)_index,NSStringFromCGRect(_imageView.frame));
 
         CGSize imageSize = _imageView.image.size;
         CGFloat xZoomScale = self.bounds.size.width / imageSize.width;
@@ -95,7 +95,6 @@
         self.maximumZoomScale =1.0 + (1.0- minScale);
         self.minimumZoomScale = 1.0;
         NSLog(@"miniScale:%f",minScale);
-//        self.zoomScale = minScale;
         
         CGFloat xWidth = imageSize.width * minScale;
         CGFloat yHight = imageSize.height * minScale;
@@ -106,7 +105,6 @@
         [self centerTheImageView];
         
         NSLog(@"self.bounds:%@",NSStringFromCGRect(self.bounds));
-        NSLog(@"_imageView%ld.frame2:%@\n",(long)_index,NSStringFromCGRect(_imageView.frame));
     }
 }
 
