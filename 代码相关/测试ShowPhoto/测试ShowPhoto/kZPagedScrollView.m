@@ -8,7 +8,6 @@
 
 #import "kZPagedScrollView.h"
 
-#define SPACEWIDTH     20
 
 @interface kZPagedScrollView()
 {
@@ -64,12 +63,14 @@
 
 -(void)oritationChangedReLayoutImageviews{
     for (kZPageViewItem *item in visibleViews) {
-        item.bounds = CGRectMake(0, 0, self.bounds.size.width - 2 * SPACEWIDTH, self.bounds.size.height);
+        item.bounds = CGRectMake(0, 0, self.bounds.size.width - SPACEWIDTH, self.bounds.size.height);
+//        item.bounds = self.bounds;
         [item setImageViewFrame];
     }
     
     for (kZPageViewItem *item in reuseCircleViews) {
-        item.bounds = CGRectMake(0, 0, self.bounds.size.width - 2 * SPACEWIDTH, self.bounds.size.height);
+        item.bounds = CGRectMake(0, 0, self.bounds.size.width - SPACEWIDTH, self.bounds.size.height);
+//        item.bounds = self.bounds;
     }
 }
 
@@ -108,7 +109,7 @@
 }
 
 -(CGRect)getRectAtIndex:(NSInteger)aIndex{
-    CGRect itemRect = CGRectMake(self.bounds.size.width * aIndex + SPACEWIDTH, 0, self.bounds.size.width - 2 * SPACEWIDTH, self.bounds.size.height);
+    CGRect itemRect = CGRectMake(self.bounds.size.width * aIndex , 0, self.bounds.size.width - SPACEWIDTH, self.bounds.size.height);
     return itemRect;
 }
 

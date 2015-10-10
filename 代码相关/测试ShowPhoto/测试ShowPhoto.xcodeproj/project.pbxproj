@@ -511,15 +511,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kang lin (QH35YMNU8L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kang lin (QH35YMNU8L)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ShowPhto.pch;
 				INFOPLIST_FILE = "测试ShowPhoto/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b641397c-f1ef-40ee-b723-fcbc9ef41365";
 			};
 			name = Debug;
 		};
@@ -536,7 +536,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b641397c-f1ef-40ee-b723-fcbc9ef41365";
 			};
 			name = Release;
 		};
@@ -544,6 +544,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kang lin (QH35YMNU8L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kang lin (QH35YMNU8L)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -555,6 +557,7 @@
 				INFOPLIST_FILE = "测试ShowPhotoTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b641397c-f1ef-40ee-b723-fcbc9ef41365";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/测试ShowPhoto.app/测试ShowPhoto";
 			};
 			name = Debug;
@@ -570,6 +573,7 @@
 				INFOPLIST_FILE = "测试ShowPhotoTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b641397c-f1ef-40ee-b723-fcbc9ef41365";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/测试ShowPhoto.app/测试ShowPhoto";
 			};
 			name = Release;

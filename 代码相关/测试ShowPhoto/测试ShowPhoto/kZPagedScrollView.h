@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "kZPageViewItem.h"
 
+#define SPACEWIDTH     20
+
 @class kZPagedScrollView;
 @protocol kZPagedScrollViewDelegate <NSObject>
 

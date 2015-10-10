@@ -41,12 +41,15 @@
         [vPhoto release];
     }
     
+    CGRect vRect = CGRectMake(0, 0, self.view.bounds.size.width + SPACEWIDTH, self.view.bounds.size.height);
     if (mScrollView == nil) {
-        mScrollView = [[kZPagedScrollView alloc] initWithFrame:self.view.bounds];
+        mScrollView = [[kZPagedScrollView alloc] initWithFrame:vRect];
         mScrollView.kzScrollViewDelegate = self;
     }
     [mScrollView disPlayItemAtIndex:0];
     [self.view addSubview:mScrollView];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -65,7 +68,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)layOutPoritWithFrame:(CGRect)aFrame{
+-(void)layOutOrientationChangedWithFrame:(CGRect)aFrame{
     mScrollView.frame = aFrame;
     NSLog(@"mScrollView.frame:%@",NSStringFromCGRect(mScrollView.frame));
     [mScrollView oritationChangedReLayoutImageviews];
@@ -93,12 +96,12 @@
 // 旋转屏幕时做的事情
 - (void) willAnimateRotationToInterfaceOrientation: (UIInterfaceOrientation) toInterfaceOrientation duration: (NSTimeInterval) duration {
     
+    CGRect vRect = CGRectMake(0, 0, self.view.bounds.size.width + SPACEWIDTH, self.view.bounds.size.height);
     // 这里的时候需要设置一下当前的终端的横竖屏状态
     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-        CGRect vRect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
-        [self layOutPoritWithFrame:vRect];
+        [self layOutOrientationChangedWithFrame:vRect];
     } else {
-        [self layOutPoritWithFrame:self.view.bounds];
+        [self layOutOrientationChangedWithFrame:vRect];
     }
      
 }
