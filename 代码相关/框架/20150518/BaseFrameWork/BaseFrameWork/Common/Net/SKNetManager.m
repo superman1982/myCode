@@ -119,6 +119,9 @@ static SKNetManager  *shareNetManager = nil;
           imageName:(NSString *)aFileID
             Success:(void (^)(NSURLResponse *response, NSURL *filePath))aSuccess
             Failure:(void(^)(NSURLResponse *responseObject, NSError *error))aFailure{
+    if (aURLStr.length == 0 || aURLStr == nil) {
+        return;
+    }
     if (aSavePath == nil) {
         aSavePath = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     }

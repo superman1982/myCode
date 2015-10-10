@@ -34,6 +34,8 @@
 -(void)dealloc{
     [_welcomePageViewController release],_welcomePageViewController = nil;
     [_moduleDics removeAllObjects],_moduleDics = nil;
+    [_homeImageView release];
+    [_homeImageView release];
     [super dealloc];
 }
 
@@ -49,6 +51,20 @@
         _welcomePageViewController.view.frame = AppDelegateInstance.window.bounds;
         [self.view addSubview:_welcomePageViewController.view];
     }
+    
+    CGRect screenRect = [UIScreen mainScreen].applicationFrame;
+    if (_cacheImageButton == nil) {
+        _cacheImageButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [_cacheImageButton addTarget:self action:@selector(cacheImageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        _cacheImageButton.frame = CGRectMake(screenRect.size.width - 110, screenRect.size.height - 30, 100, 44);
+//        _cacheImageButton.backgroundColor = [UIColor blueColor];
+        [_cacheImageButton setTitle:@"列表图片缓存" forState:UIControlStateNormal];
+    }
+    [self.view addSubview:_cacheImageButton];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {

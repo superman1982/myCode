@@ -11,5 +11,8 @@
 
 @interface HomePageViewController : SKHomePageViewController
 
+@property (retain, nonatomic) IBOutlet UIButton *cacheImageButton;
+
+@property (retain, nonatomic) IBOutlet UIImageView *homeImageView;
 @property (nonatomic,retain)  NSMutableDictionary *moduleDics;
 @end
