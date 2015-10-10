@@ -29,18 +29,19 @@
 }
 -(void)addFooterView{
     if (_footerView == nil) {
-        _footerView = [[SKLoadMoreTableFooterView alloc] initWithFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, 100)];
+        _footerView = [[SKLoadMoreTableFooterView alloc] initWithFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, 44)];
         _footerView.delegate = self;
         _footerView.backgroundColor = self.homeTableView.backgroundColor;
         _footerView.tableView = self.homeTableView;
     }
-//    self.homeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//  self.homeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.homeTableView addSubview:_footerView];
+
 }
 
 -(void)setFrame:(CGRect)frame{
     [super setFrame:frame];
-    _footerView.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width, 100);
+    _footerView.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width, 44);
 }
 
 #pragma mark - 辅助功能
@@ -91,7 +92,7 @@
 #pragma mark EGORefresh
 -(void)doneLoadingTableViewData{
     [super doneLoadingTableViewData];
-    _footerView.frame =  CGRectMake(0, self.homeTableView.contentSize.height, self.homeTableView.frame.size.width, 100);
+    _footerView.frame =  CGRectMake(0, self.homeTableView.contentSize.height, self.homeTableView.frame.size.width, 44);
 }
 
 #pragma mark LoadMoreDelegate
@@ -119,7 +120,7 @@
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [super scrollViewWillBeginDragging:scrollView];
-    [_footerView loadMoreScrollViewWillBeginScroll:scrollView];
+    [_footerView loadMoreScrollViewWillBeginDrag:scrollView];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [super scrollViewDidScroll:scrollView];

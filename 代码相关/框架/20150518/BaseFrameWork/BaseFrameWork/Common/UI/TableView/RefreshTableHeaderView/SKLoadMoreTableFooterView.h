@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, LoadState) {
-    LoadStateBegainDrag ,
+    LoadStateDragToLoad ,
+    LoadStateRealseToLoad,
     LoadStateLoading,
     LoadStateLoadFinish,
     LoadStateNoneData,
@@ -28,7 +29,7 @@ typedef NS_ENUM(NSInteger, LoadState) {
 @property (nonatomic,assign) id<SKLoadMoreTableFooterViewDelegate> delegate;
 @property (nonatomic,assign) UITableView    *tableView;
 
-- (void)loadMoreScrollViewWillBeginScroll:(UIScrollView *)scrollView;
+- (void)loadMoreScrollViewWillBeginDrag:(UIScrollView *)scrollView;
 
 - (void)loadMoreScrollViewDidScroll:(UIScrollView *)scrollView;
 
