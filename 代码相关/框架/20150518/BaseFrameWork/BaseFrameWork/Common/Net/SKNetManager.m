@@ -59,12 +59,34 @@ static SKNetManager  *shareNetManager = nil;
     return vDict;
 }
 
++ (AFHTTPRequestOperation *)getURLJsonData:(NSString *)aURLStr
+                                   Success:(void (^)(id responseObject, NSError *error))aSuccess
+                                   Failure:(void(^)(id responseObject, NSError *error))aFailure{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    manager.requestSerializer.HTTPShouldHandleCookies = YES;
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    AFHTTPRequestOperation *operation = [manager GET:aURLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (aSuccess) {
+            aSuccess(responseObject,nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (aFailure) {
+            aFailure(operation,error);
+        }
+        NSLog(@"%@",[error description]);
+    }];
+    
+    return operation;
+}
 
 
 +(AFHTTPRequestOperation *)postURLJsonData:(NSString *)aURLStr
-         Parameter:(NSDictionary *)aParameter
-           Success:(void (^)(id responseObject, NSError *error))aSuccess
-           Failure:(void(^)(id responseObject, NSError *error))aFailure
+                                 Parameter:(NSDictionary *)aParameter
+                                   Success:(void (^)(id responseObject, NSError *error))aSuccess
+                                   Failure:(void(^)(id responseObject, NSError *error))aFailure
 {
     NSLog(@"postURL:%@",aURLStr);
     NSLog(@"postParemeter:%@",aParameter);
@@ -89,13 +111,13 @@ static SKNetManager  *shareNetManager = nil;
 
 
 +(AFHTTPRequestOperation *)postURLData:(NSString *)aURLStr
-         Parameter:(NSDictionary *)aParameter
-           Success:(void (^)(id responseObject, NSError *error))aSuccess
-           Failure:(void(^)(id responseObject, NSError *error))aFailure
+                             Parameter:(NSDictionary *)aParameter
+                               Success:(void (^)(id responseObject, NSError *error))aSuccess
+                               Failure:(void(^)(id responseObject, NSError *error))aFailure
 {
     NSLog(@"postURL:%@",aURLStr);
     NSLog(@"postParemeter:%@",aParameter);
-
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer.HTTPShouldHandleCookies = YES;

@@ -19,6 +19,11 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self initWithNavi];
+    NSString *viewClassName =  NSStringFromClass([self class]);
+    viewClassName = [viewClassName stringByReplacingOccurrencesOfString:@"Controller" withString:@""];
+    Class viewClass = NSClassFromString(viewClassName);
+    id viewOfTheViewController = [[viewClass alloc] initWithFrame:self.view.bounds];
+    self.view = viewOfTheViewController;
 }
 
 -(void)initWithNavi{

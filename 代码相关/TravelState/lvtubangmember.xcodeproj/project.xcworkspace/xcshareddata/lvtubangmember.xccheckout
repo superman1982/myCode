@@ -5,9 +5,9 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>693F1039-9A06-4D45-9CFA-273D76758BCB</string>
+	<string>30811B1E-E252-4B3C-AE3D-BA8C2605B861</string>
 	<key>IDESourceControlProjectName</key>
-	<string>BaseArchitecture</string>
+	<string>lvtubangmember</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>555379a2-51cc-0c44-afc6-9155ad995cb7++3305</key>
@@ -20,17 +20,17 @@
 		<string>https://github.com/klbest1/myCode.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>代码相关/框架/基本框架配置/BaseArchitecture.xcodeproj</string>
+	<string>代码相关/TravelState/lvtubangmember.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>555379a2-51cc-0c44-afc6-9155ad995cb7++3305</key>
-		<string>../../../../..%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/%E6%A1%86%E6%9E%B6/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6%E9%85%8D%E7%BD%AE/AppleArchitecture/Public/UI/CustomTabBar/</string>
+		<string>../../../..%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/TravelState/AppleArchitecture/Public/UI/CustomTabBar/</string>
 		<key>7a2d1a18-cc9a-4d72-b225-2d6fa3914085++1148</key>
-		<string>../../../../..%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/%E6%A1%86%E6%9E%B6/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6%E9%85%8D%E7%BD%AE/AppleArchitecture/Public/ThirdPart/baiduNaviSDK/baiduNaviSDK.bundle/</string>
+		<string>../../../..%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/TravelState/AppleArchitecture/Public/ThirdPart/baiduNaviSDK/baiduNaviSDK.bundle/</string>
 		<key>7a2d1a18-cc9a-4d72-b225-2d6fa3914085++9365</key>
-		<string>../../../../..%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/%E6%A1%86%E6%9E%B6/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6%E9%85%8D%E7%BD%AE/AppleArchitecture/Public/ThirdPart/baiduNaviSDK/TTS/BNTTSSDK.bundle/</string>
+		<string>../../../..%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/TravelState/AppleArchitecture/Public/ThirdPart/baiduNaviSDK/TTS/BNTTSSDK.bundle/</string>
 		<key>99E0C45B6BB0D21CE940170D0977D2A952B181B6</key>
-		<string>../../../../..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
