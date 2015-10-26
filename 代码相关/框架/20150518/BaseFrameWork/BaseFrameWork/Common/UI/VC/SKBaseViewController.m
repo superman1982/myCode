@@ -19,15 +19,21 @@
 
 -(void)loadView{
     [super loadView];
-    NSString *viewClassName =  NSStringFromClass([self class]);
-    viewClassName = [viewClassName stringByReplacingOccurrencesOfString:@"Controller" withString:@""];
-    Class viewClass = NSClassFromString(viewClassName);
-    if ([viewClass isSubclassOfClass:[UIView class]]) {
-        id currentView = [[viewClass alloc] initWithFrame:self.view.bounds];
-        self.baseView = currentView;
-        [self.view  addSubview:currentView];
+    if(_baseView == nil){
+        NSString *viewClassName =  NSStringFromClass([self class]);
+        viewClassName = [viewClassName stringByReplacingOccurrencesOfString:@"Controller" withString:@""];
+        Class viewClass = NSClassFromString(viewClassName);
+        if ([viewClass isSubclassOfClass:[UIView class]]) {
+            id currentView = [[viewClass alloc] initWithFrame:self.view.bounds];
+            self.baseView = currentView;
+            [self.view  addSubview:currentView];
+        }
+    }else{
+        [_baseView removeFromSuperview];
+        [self.view addSubview:_baseView];
     }
 }
+
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -45,7 +51,7 @@
     vTitleLable.text = _titleStr;
     [self.navigationItem setTitleView:vTitleLable];
     [vTitleLable release];
-    
+
     UIBarButtonItem *vLeftButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(backButtonClicked:)];
     self.navigationItem.leftBarButtonItem = vLeftButtonItem;
     [vLeftButtonItem release];
