@@ -14,6 +14,8 @@
 
 @property (nonatomic,retain) id       parameter;
 
+@property (nonatomic,assign) UIView  *baseView;
+
 -(void)initWithNavi;
 -(void)showElertView:(NSString *)aMessage;
 @end

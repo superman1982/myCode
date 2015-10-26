@@ -12,18 +12,27 @@
 @implementation SKBaseViewController
 
 -(void)dealloc{
+    SK_RELEASE_SAFELY(_baseView);
     [_parameter release];
     [super dealloc];
+}
+
+-(void)loadView{
+    [super loadView];
+    NSString *viewClassName =  NSStringFromClass([self class]);
+    viewClassName = [viewClassName stringByReplacingOccurrencesOfString:@"Controller" withString:@""];
+    Class viewClass = NSClassFromString(viewClassName);
+    if ([viewClass isSubclassOfClass:[UIView class]]) {
+        id currentView = [[viewClass alloc] initWithFrame:self.view.bounds];
+        self.baseView = currentView;
+        [self.view  addSubview:currentView];
+    }
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self initWithNavi];
-    NSString *viewClassName =  NSStringFromClass([self class]);
-    viewClassName = [viewClassName stringByReplacingOccurrencesOfString:@"Controller" withString:@""];
-    Class viewClass = NSClassFromString(viewClassName);
-    id viewOfTheViewController = [[viewClass alloc] initWithFrame:self.view.bounds];
-    self.view = viewOfTheViewController;
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 -(void)initWithNavi{
@@ -36,7 +45,14 @@
     vTitleLable.text = _titleStr;
     [self.navigationItem setTitleView:vTitleLable];
     [vTitleLable release];
+    
+    UIBarButtonItem *vLeftButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(backButtonClicked:)];
+    self.navigationItem.leftBarButtonItem = vLeftButtonItem;
+    [vLeftButtonItem release];
+}
 
+-(void)backButtonClicked:(id)aSender{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)showElertView:(NSString *)aMessage{
