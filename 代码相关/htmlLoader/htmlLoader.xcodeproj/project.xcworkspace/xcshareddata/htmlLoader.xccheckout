@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A2B36F20-765B-4D4A-A2D9-9F341D80EA77</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>99E0C45B6BB0D21CE940170D0977D2A952B181B6</key>
+		<string>https://github.com/klbest1/myCode.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>代码相关/htmlLoader/htmlLoader.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>99E0C45B6BB0D21CE940170D0977D2A952B181B6</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/klbest1/myCode.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>99E0C45B6BB0D21CE940170D0977D2A952B181B6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>99E0C45B6BB0D21CE940170D0977D2A952B181B6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>myCode</string>
+		</dict>
+	</array>
+</dict>
+</plist>
