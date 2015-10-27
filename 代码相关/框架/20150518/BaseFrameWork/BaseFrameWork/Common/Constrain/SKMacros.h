@@ -21,6 +21,7 @@
     #define                                         LOGERROR(...) NSLog(@"%@传入数据有误",__VA_ARGS__)
 #endif
 
+#define RGBCOLOR(r, g, b) [UIColor colorWithRed : (r) / 255.0 green : (g) / 255.0 blue : (b) / 255.0 alpha : 1]
 //16进制颜色
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 //释放对象
@@ -29,6 +30,7 @@
 #define FONTSYS(size) ([UIFont systemFontOfSize:(size)])
 //图片
 #define SY_IMAGE(name) [UIImage imageNamed:(name)]
+
 //判断系统版本
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
@@ -48,10 +50,4 @@
 #define IS_IPHONE                                  ( [ [ [ UIDevice currentDevice ] model ] isEqualToString: @"iPhone" ] || [ [ [ UIDevice currentDevice ] model ] isEqualToString: @"iPhone Simulator" ])
 #define IS_IPOD                                    ( [ [ [ UIDevice currentDevice ] model ] isEqualToString: @"iPod touch" ] )
 #define IS_IPHONE_5                                ( IS_IPHONE && IS_WIDESCREEN )
-
-//判断字符串是否为空
-#define IFISNIL(v)                                 (v = (v != nil) ? v : @"")
-//判断NSNumber是否为空
-#define IFISNILFORNUMBER(v)                        (v = (v != nil) ? v : [NSNumber numberWithInt:0])
-//判断是否是字符串
-#define IFISSTR(v)                                 (v = ([v isKindOfClass:[NSString class]]) ? v : [NSString stringWithFormat:@"%@",v])
+#define IS_SIMULATOR                               ([ [ [ UIDevice currentDevice ] model ] isEqualToString: @"iPhone Simulator" ])

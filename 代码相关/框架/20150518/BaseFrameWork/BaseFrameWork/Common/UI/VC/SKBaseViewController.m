@@ -17,6 +17,14 @@
     [super dealloc];
 }
 
+-(id)init{
+    self = [super init];
+    if (self) {
+        [self initWithNavi];
+    }
+    return self;
+}
+
 -(void)loadView{
     [super loadView];
     if(_baseView == nil){
@@ -37,24 +45,17 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self initWithNavi];
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
 -(void)initWithNavi{
-    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x206ba7);
-    UILabel *vTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 21)];
-    vTitleLable.font = [UIFont boldSystemFontOfSize:17];
-    vTitleLable.textColor = [UIColor whiteColor];
-    vTitleLable.textAlignment = NSTextAlignmentCenter;
-    vTitleLable.backgroundColor = [UIColor clearColor];
-    vTitleLable.text = _titleStr;
-    [self.navigationItem setTitleView:vTitleLable];
-    [vTitleLable release];
+    [UINavigationBar appearance].barTintColor = RGBCOLOR(110, 200, 255);
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                          [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:17], NSFontAttributeName, nil]];
 
-    UIBarButtonItem *vLeftButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(backButtonClicked:)];
-    self.navigationItem.leftBarButtonItem = vLeftButtonItem;
-    [vLeftButtonItem release];
+//    UIBarButtonItem *vLeftButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(backButtonClicked:)];
+//    self.navigationItem.leftBarButtonItem = vLeftButtonItem;
+//    [vLeftButtonItem release];
 }
 
 -(void)backButtonClicked:(id)aSender{
