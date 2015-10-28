@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SKBaseViewController.h"
 
-@interface SKLoginViewController : UIViewController
+@interface SKLoginViewController : SKBaseViewController
 
 
 @end

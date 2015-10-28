@@ -60,8 +60,8 @@ static SKNetManager  *shareNetManager = nil;
 }
 
 + (AFHTTPRequestOperation *)getURLJsonData:(NSString *)aURLStr
-                                   Success:(void (^)(id responseObject, NSError *error))aSuccess
-                                   Failure:(void(^)(id responseObject, NSError *error))aFailure{
+                                  Success:(void (^)(id responseObject, NSError *error))aSuccess
+                                  Failure:(void(^)(id responseObject, NSError *error))aFailure{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer.HTTPShouldHandleCookies = YES;
@@ -84,9 +84,9 @@ static SKNetManager  *shareNetManager = nil;
 
 
 +(AFHTTPRequestOperation *)postURLJsonData:(NSString *)aURLStr
-                                 Parameter:(NSDictionary *)aParameter
-                                   Success:(void (^)(id responseObject, NSError *error))aSuccess
-                                   Failure:(void(^)(id responseObject, NSError *error))aFailure
+         Parameter:(NSDictionary *)aParameter
+           Success:(void (^)(id responseObject, NSError *error))aSuccess
+           Failure:(void(^)(id responseObject, NSError *error))aFailure
 {
     NSLog(@"postURL:%@",aURLStr);
     NSLog(@"postParemeter:%@",aParameter);
@@ -111,13 +111,13 @@ static SKNetManager  *shareNetManager = nil;
 
 
 +(AFHTTPRequestOperation *)postURLData:(NSString *)aURLStr
-                             Parameter:(NSDictionary *)aParameter
-                               Success:(void (^)(id responseObject, NSError *error))aSuccess
-                               Failure:(void(^)(id responseObject, NSError *error))aFailure
+         Parameter:(NSDictionary *)aParameter
+           Success:(void (^)(id responseObject, NSError *error))aSuccess
+           Failure:(void(^)(id responseObject, NSError *error))aFailure
 {
     NSLog(@"postURL:%@",aURLStr);
     NSLog(@"postParemeter:%@",aParameter);
-    
+
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.securityPolicy.allowInvalidCertificates = YES;
     manager.requestSerializer.HTTPShouldHandleCookies = YES;

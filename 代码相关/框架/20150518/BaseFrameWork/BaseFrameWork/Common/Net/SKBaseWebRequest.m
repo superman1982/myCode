@@ -68,24 +68,23 @@
     }
     NSString *reponseObjceStr = [error.userInfo objectForKey:NSLocalizedRecoverySuggestionErrorKey];
     NSData *vData = [reponseObjceStr dataUsingEncoding:NSISOLatin1StringEncoding];
-    if (vData == nil) {
-        return;
-    }
-    NSData *vDecompressData = [SkDataUtil uncompressZippedData:(NSMutableData *)vData];
-    
-    NSDictionary *vErrorDic = [NSJSONSerialization JSONObjectWithData:vDecompressData options:kNilOptions error:nil];
-
-    NSLog(@"errorDic:%@",vErrorDic);
-    NSError *vError = nil;
-    if (vErrorDic.count > 0) {
-        NSString *vErrorMessage = [vErrorDic objectForKey:@"message"];
-        vErrorMessage = [self stringFromHtmlStr:vErrorMessage];
+    if (vData != nil) {
+        NSData *vDecompressData = [SkDataUtil uncompressZippedData:(NSMutableData *)vData];
         
-        vError = [NSError errorWithDomain:vErrorMessage code:[[vErrorDic objectForKey:@"code"] integerValue] userInfo:nil];
+        NSDictionary *vErrorDic = [NSJSONSerialization JSONObjectWithData:vDecompressData options:kNilOptions error:nil];
+        
+        NSLog(@"errorDic:%@",vErrorDic);
+        NSError *vError = nil;
+        if (vErrorDic.count > 0) {
+            NSString *vErrorMessage = [vErrorDic objectForKey:@"message"];
+            vErrorMessage = [self stringFromHtmlStr:vErrorMessage];
+            
+            vError = [NSError errorWithDomain:vErrorMessage code:[[vErrorDic objectForKey:@"code"] integerValue] userInfo:nil];
+        }
     }
-    
+
     if ([_delegate respondsToSelector:@selector(didLoadDataFailure:Error:)]) {
-        [_delegate didLoadDataFailure:responseObject Error:vError];
+        [_delegate didLoadDataFailure:responseObject Error:nil];
     }
 }
 

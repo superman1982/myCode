@@ -27,6 +27,8 @@
 
 -(void)loadView{
     [super loadView];
+    _width = self.view.bounds.size.width;
+    _height = self.view.bounds.size.height;
     if(_baseView == nil){
         NSString *viewClassName =  NSStringFromClass([self class]);
         viewClassName = [viewClassName stringByReplacingOccurrencesOfString:@"Controller" withString:@""];
@@ -45,17 +47,15 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = YK_BACKGROUND_COLOR;
 }
 
 -(void)initWithNavi{
-    [UINavigationBar appearance].barTintColor = RGBCOLOR(110, 200, 255);
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]]; // 返回按钮颜色
+    [UINavigationBar appearance].barTintColor = YK_BUTTON_COLOR; //背景颜色
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                          [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:17], NSFontAttributeName, nil]];
+                                                          [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:17], NSFontAttributeName, nil]]; //标题title属性
 
-//    UIBarButtonItem *vLeftButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(backButtonClicked:)];
-//    self.navigationItem.leftBarButtonItem = vLeftButtonItem;
-//    [vLeftButtonItem release];
 }
 
 -(void)backButtonClicked:(id)aSender{

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SKHomePageViewController : UIViewController
+@interface SKHomePageViewController : UITabBarController
 
 @end

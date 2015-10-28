@@ -49,19 +49,34 @@
     self.loginViewController.view.frame = CGRectMake(-self.window.frame.size.width, 0, self.loginViewController.view.frame.size.width, self.loginViewController.view.frame.size.height);
     [self.window addSubview:self.loginViewController.view];
     CGFloat vDuration = 0.3;
-    if (!aAnimate) {
-        vDuration = 0.0;
+
+    if (aAnimate) {
+        [UIView beginAnimations:@"add loginView" context:@""];
+        [UIView setAnimationDuration:vDuration];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(loginAnimationComplete)];
     }
-    [UIView animateWithDuration:vDuration animations:^{
-        if(_homeViewController != nil){
-            self.homeViewController.view.alpha = 0.5;
-        }
-        self.loginViewController.view.alpha = 1.0;
-        self.loginViewController.view.frame = CGRectMake(0, 0, self.loginViewController.view.frame.size.width, self.loginViewController.view.frame.size.height);
-    } completion:^(BOOL finished) {
-        [self.loginViewController.view removeFromSuperview];
-        self.window.rootViewController = self.loginViewController;
-    }];
+
+    if(_homeViewController != nil){
+        self.homeViewController.view.alpha = 0.5;
+    }
+    self.loginViewController.view.alpha = 1.0;
+    self.loginViewController.view.frame = CGRectMake(0, 0, self.loginViewController.view.frame.size.width, self.loginViewController.view.frame.size.height);
+    
+    if (aAnimate) {
+        [UIView commitAnimations];
+    }else{
+        [self loginAnimationComplete];
+    }
+    
+}
+
+-(void)loginAnimationComplete{
+    [self.loginViewController.view removeFromSuperview];
+    UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:self.loginViewController];
+    self.window.rootViewController = naviController;
+    [naviController setNavigationBarHidden:YES];
+    [naviController autorelease];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

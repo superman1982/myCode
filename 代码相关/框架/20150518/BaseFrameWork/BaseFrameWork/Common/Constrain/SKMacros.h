@@ -10,6 +10,11 @@
 // 应用程序托管
 #define AppDelegateInstance	                        ((SKAppDelegate *)([UIApplication sharedApplication].delegate))
 
+#define YK_BACKGROUND_COLOR  [UIColor colorWithRed:0.960784 green:0.964706 blue:0.964706 alpha:1]
+#define YK_BUTTON_COLOR     [UIColor colorWithRed:0.137255 green:0.603922 blue:0.913725 alpha:1]
+
+
+#define YK_String(key)               NSLocalizedString(key, nil)
 // 其它的宏定义
 #ifdef DEBUG
 	#define                                         NSLog(...) NSLog(__VA_ARGS__)
@@ -44,10 +49,3 @@
 //判断是否大于 IOS7
 #define IS_IOS7 (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && SYSTEM_VERSION_LESS_THAN(@"8.0"))
 #define IS_IOS8 SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0") 
-
-//判断是否是iphone5
-#define IS_WIDESCREEN                              ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - (double)568 ) < __DBL_EPSILON__ )
-#define IS_IPHONE                                  ( [ [ [ UIDevice currentDevice ] model ] isEqualToString: @"iPhone" ] || [ [ [ UIDevice currentDevice ] model ] isEqualToString: @"iPhone Simulator" ])
-#define IS_IPOD                                    ( [ [ [ UIDevice currentDevice ] model ] isEqualToString: @"iPod touch" ] )
-#define IS_IPHONE_5                                ( IS_IPHONE && IS_WIDESCREEN )
-#define IS_SIMULATOR                               ([ [ [ UIDevice currentDevice ] model ] isEqualToString: @"iPhone Simulator" ])

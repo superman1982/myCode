@@ -34,7 +34,7 @@ struct UPData{
                                   Failure:(void(^)(id responseObject, NSError *error))aFailure;
 
 /**
- post请求， 请求数据返回类型是URLData形式
+  post请求， 请求数据返回类型是URLData形式
  @param aParameter  需要传的参数
  */
 +(AFHTTPRequestOperation *)postURLData:(NSString *)aURLStr
@@ -53,7 +53,7 @@ struct UPData{
 
 +(void)downLoadData:(NSString *)aURLStr
            SavePath:(NSURL *)aSavePath
-          imageName:(NSString *)aFileID
+             imageName:(NSString *)aFileID
             Success:(void (^)(NSURLResponse *response, NSURL *filePath))aSuccess
             Failure:(void(^)(NSURLResponse *responseObject, NSError *error))aFailure;
 

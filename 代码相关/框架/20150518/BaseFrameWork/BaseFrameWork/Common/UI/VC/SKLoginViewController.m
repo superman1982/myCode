@@ -42,7 +42,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
     // Do any additional setup after loading the view from its nib.
 //    SkLocalSetting *vSet = [SkLocalSetting instanceSkLocalSetting];
 //    vSet.loginName  = @"sy4";

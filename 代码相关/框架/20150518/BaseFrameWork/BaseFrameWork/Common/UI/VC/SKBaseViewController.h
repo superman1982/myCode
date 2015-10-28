@@ -16,6 +16,9 @@
 
 @property (nonatomic,assign) UIView  *baseView;
 
+@property (nonatomic,assign) float   width;
+@property (nonatomic,assign) float   height;
+
 -(void)initWithNavi;
 -(void)showElertView:(NSString *)aMessage;
 @end
