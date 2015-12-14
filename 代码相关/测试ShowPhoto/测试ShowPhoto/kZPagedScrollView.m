@@ -126,7 +126,7 @@
     
     CGRect visibleBounds = self.bounds;
     int firstVisiblePage = floorf(CGRectGetMinX(visibleBounds)/visibleBounds.size.width);
-    int lastVisiblePage =  floorf((CGRectGetMaxX(visibleBounds) -1 ) / visibleBounds.size.width);
+    int lastVisiblePage =  floorf((CGRectGetMaxX(visibleBounds) -4 ) / visibleBounds.size.width);
     if (firstVisiblePage <0 || lastVisiblePage >= totalNumber) {
         return;
     }
@@ -151,7 +151,7 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self tilePages];
     });
 }

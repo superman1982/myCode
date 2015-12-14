@@ -1,0 +1,49 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "99E0C45B6BB0D21CE940170D0977D2A952B181B6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "7a2d1a18-cc9a-4d72-b225-2d6fa3914085++9365" : {
+
+    },
+    "555379a2-51cc-0c44-afc6-9155ad995cb7++3305" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "99E0C45B6BB0D21CE940170D0977D2A952B181B6" : 0,
+    "7a2d1a18-cc9a-4d72-b225-2d6fa3914085++9365" : 0,
+    "7a2d1a18-cc9a-4d72-b225-2d6fa3914085++1148" : 0,
+    "555379a2-51cc-0c44-afc6-9155ad995cb7++3305" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "30811B1E-E252-4B3C-AE3D-BA8C2605B861",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "99E0C45B6BB0D21CE940170D0977D2A952B181B6" : "myCode",
+    "7a2d1a18-cc9a-4d72-b225-2d6fa3914085++9365" : "myCode%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3\/TravelState\/AppleArchitecture\/Public\/ThirdPart\/baiduNaviSDK\/TTS\/BNTTSSDK.bundle",
+    "7a2d1a18-cc9a-4d72-b225-2d6fa3914085++1148" : "myCode%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3\/TravelState\/AppleArchitecture\/Public\/ThirdPart\/baiduNaviSDK\/baiduNaviSDK.bundle",
+    "555379a2-51cc-0c44-afc6-9155ad995cb7++3305" : "myCode%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3\/TravelState\/AppleArchitecture\/Public\/UI\/CustomTabBar"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "lvtubangmember",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "代码相关\/TravelState\/lvtubangmember.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/192.168.0.138\/svn\/projects",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "555379a2-51cc-0c44-afc6-9155ad995cb7++3305"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/svn.baidu.com\/app\/search\/lbs-navi",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7a2d1a18-cc9a-4d72-b225-2d6fa3914085++1148"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/svn.baidu.com\/app\/search\/lbs-navi",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7a2d1a18-cc9a-4d72-b225-2d6fa3914085++9365"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/klbest1\/myCode.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "99E0C45B6BB0D21CE940170D0977D2A952B181B6"
+    }
+  ]
+}

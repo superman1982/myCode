@@ -72,7 +72,7 @@
 }
 
 -(void)setDownLoadProgress:(float)aProgress{
-    if (aProgress == 1.0) {
+    if (aProgress == 1.0|| aProgress <= 0) {
         _downLoadProgressHUD.hidden = YES;
     }else{
         _downLoadProgressHUD.hidden = NO;
