@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SLCustomUINavigationControllerDelegate <NSObject>
+
+-(void)didTakePhotoSuccess:(UIImage *)photo;
+
+@end
+
 @interface SLCustomUINavigationController : UINavigationController
+
+@property (nonatomic,assign) id naviDelegate;
 
 -(void)showCamera:(UIViewController *)aParentVC;
 @end

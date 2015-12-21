@@ -33,6 +33,7 @@
 		3EC7EAAA1AB3D9EA002F300F /* close_cha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC7EAA91AB3D9EA002F300F /* close_cha@2x.png */; };
 		3EC7EAAC1AB3D9F3002F300F /* close_cha_h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC7EAAB1AB3D9F3002F300F /* close_cha_h@2x.png */; };
 		3ED4A7D81ABA68C80034F6A1 /* SCSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED4A7D71ABA68C80034F6A1 /* SCSlider.m */; };
+		3EDAAEF41C27E2D20062F845 /* SLPhotoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAAEF31C27E2D20062F845 /* SLPhotoContentView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,8 @@
 		3EC7EAAB1AB3D9F3002F300F /* close_cha_h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_cha_h@2x.png"; sourceTree = "<group>"; };
 		3ED4A7D61ABA68C80034F6A1 /* SCSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSlider.h; sourceTree = "<group>"; };
 		3ED4A7D71ABA68C80034F6A1 /* SCSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSlider.m; sourceTree = "<group>"; };
+		3EDAAEF21C27E2D20062F845 /* SLPhotoContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPhotoContentView.h; sourceTree = "<group>"; };
+		3EDAAEF31C27E2D20062F845 /* SLPhotoContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPhotoContentView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +194,8 @@
 				3EA994051AB1AF6C0002FF19 /* SLCameraViewController.m */,
 				3ED4A7D61ABA68C80034F6A1 /* SCSlider.h */,
 				3ED4A7D71ABA68C80034F6A1 /* SCSlider.m */,
+				3EDAAEF21C27E2D20062F845 /* SLPhotoContentView.h */,
+				3EDAAEF31C27E2D20062F845 /* SLPhotoContentView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 				3EC0EEF51AB060FA006A9457 /* SLCustomUINavigationController.m in Sources */,
 				3EC0EECF1AB0601F006A9457 /* main.m in Sources */,
 				3EA994061AB1AF6C0002FF19 /* SLCameraViewController.m in Sources */,
+				3EDAAEF41C27E2D20062F845 /* SLPhotoContentView.m in Sources */,
 				3ED4A7D81ABA68C80034F6A1 /* SCSlider.m in Sources */,
 				3EA994031AB1AA7A0002FF19 /* UIImage+Resize.m in Sources */,
 			);
@@ -443,7 +449,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "83ac2349-2337-4f45-aa41-5754786190c3";
+				PROVISIONING_PROFILE = "f173f698-c617-456b-8c81-eecf89e287f5";
 			};
 			name = Debug;
 		};

@@ -23,8 +23,6 @@
 
 @property (nonatomic,retain) AVCaptureStillImageOutput *outPutDevice;
 
-@property (nonatomic,retain) AVCaptureDeviceInput *inputDevice;
-
 @property (nonatomic,retain) dispatch_queue_t sessionQueue;
 @end
 
@@ -256,7 +254,14 @@ monitorSubjectAreaChange:(BOOL)aBool{
 
 #pragma mark 切换前置、后置相机
 -(void)switchCamera:(BOOL)aFront{
+    if (!_inputDevice) {
+        return;
+    }
+    [_avCaptureSession beginConfiguration];
+    
+    [_avCaptureSession removeInput:_inputDevice];
     [self addInputDeviceWithFront:aFront];
+    [_avCaptureSession commitConfiguration];
 }
 
 #pragma mark 镜头拉伸

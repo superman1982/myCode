@@ -18,6 +18,8 @@ typedef void(^didCapturePhotoSuccess)(UIImage *aStillImage);
 
 @property (nonatomic,assign)  CGFloat    scaleNum;
 
+@property (nonatomic,retain) AVCaptureDeviceInput *inputDevice;
+
 -(void)configerSession:(CGRect)aCameraFrame parentView:(UIView *)aParentView;
 //拍照
 -(void)takePhoto:(didCapturePhotoSuccess )complete;

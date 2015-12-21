@@ -36,4 +36,7 @@
     [vNavi release];
 }
 
+-(void)didTakePhotoSuccess:(UIImage *)photo{
+    NSLog(@"photo:%@",photo);
+}
 @end

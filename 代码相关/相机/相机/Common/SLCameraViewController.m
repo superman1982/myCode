@@ -9,6 +9,9 @@
 #import "SLCameraViewController.h"
 #import "SLSessionManeger.h"
 #import "SCSlider.h"
+#import "SLCustomUINavigationController.h"
+#import "SLPhotoContentView.h"
+
 
 #define ADJUSTINT_FOCUS @"adjustingFocus"
 #define MAX_PINCH_SCALE_NUM   3.f
@@ -21,6 +24,7 @@
     UIImageView      *_focusView;
     NSInteger        _alphaTimes;
     SCSlider         *_slider;
+    SLPhotoContentView   *_photoContentView;
 }
 @end
 
@@ -53,6 +57,7 @@
     [self addPinch];
     [self addSlider];
     [self addTapGesture];
+    [self addPhotoContentView];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -111,15 +116,27 @@
     [vBackGroundView release];
 }
 
+-(void)addPhotoContentView{
+    if (_photoContentView == nil) {
+        _photoContentView = [[SLPhotoContentView alloc] initWithFrame:self.view.bounds];
+        [_photoContentView.retakeButton addTarget:self action:@selector(retake:) forControlEvents:UIControlEventTouchUpInside];
+        [_photoContentView.usingPhotoButton addTarget:self action:@selector(usingPhoto:) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+
 -(void)addFoucusView{
+    if (_focusView.superview) {
+        [_focusView removeFromSuperview];
+    }
     if (_focusView == nil) {
         _focusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"touch_focus_x.png"]];
         _focusView.alpha = 0;
     }
     [self.view addSubview:_focusView];
     
-    AVCaptureDevice *vDeivce = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    AVCaptureDevice *vDeivce = _takePhotoSessionManeger.inputDevice.device;
     if (vDeivce && [vDeivce isFocusPointOfInterestSupported]) {
+//        [vDeivce removeObserver:self forKeyPath:ADJUSTINT_FOCUS];
         [vDeivce addObserver:self forKeyPath:ADJUSTINT_FOCUS options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     }
 }
@@ -161,11 +178,16 @@
     return vButton;
 }
 
+
 #pragma mark 拍照
 -(void)takePhotoClicked:(UIButton *)sender{
     sender.enabled = NO;
     [_takePhotoSessionManeger takePhoto:^(UIImage *aStillImage) {
         sender.enabled = YES;
+        _photoContentView.photoImageView.image = aStillImage;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view addSubview:_photoContentView];
+        });
     }];
 }
 
@@ -173,6 +195,7 @@
 -(void)switchDeviceClicked:(UIButton *)sender{
      sender.selected = !sender.selected;
     [_takePhotoSessionManeger switchCamera:sender.selected];
+    [self addFoucusView];
 }
 
 #pragma mark 点击闪光灯
@@ -194,9 +217,23 @@
 }
 
 -(void)closeClicked:(UIButton *)aSender{
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)retake:(id)sender{
+    if (_photoContentView.superview) {
+        [_photoContentView removeFromSuperview];
+    }
+}
+
+-(void)usingPhoto:(id)sender{
+    __block __weak SLCameraViewController * weakSelf = self;
+    SLCustomUINavigationController *navi = (SLCustomUINavigationController *)(weakSelf).navigationController;
+    if ([navi.naviDelegate respondsToSelector:@selector(didTakePhotoSuccess:)]) {
+        [navi.naviDelegate didTakePhotoSuccess:_photoContentView.photoImageView.image];
+    }
+    [self closeClicked:nil];
+}
 #pragma mark - 对焦
 //监听对焦是否完成了
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -214,7 +251,8 @@
         _focusView.alpha = vAlpha;
         _alphaTimes++;
     } completion:^(BOOL finished) {
-        if (_alphaTimes != -1) {
+        AVCaptureDevice *vDeivce = _takePhotoSessionManeger.inputDevice.device;
+        if (_alphaTimes != -1 && [vDeivce isFocusPointOfInterestSupported]) {
             [self showFocusView];
         }else{
             _focusView.alpha = 0;

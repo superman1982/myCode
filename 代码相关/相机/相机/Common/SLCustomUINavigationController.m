@@ -33,6 +33,7 @@
 }
 
 -(void)showCamera:(UIViewController *)aParentVC{
+    _naviDelegate = aParentVC;
     [self setNavigationBarHidden:YES];
     [self setHidesBottomBarWhenPushed:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
